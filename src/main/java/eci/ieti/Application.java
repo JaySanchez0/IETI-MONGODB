@@ -126,7 +126,7 @@ public class Application implements CommandLineRunner {
         for(Todo t: todos){
             System.out.println("Priority: "+t.getPriority());
         }
-        query = new BasicQuery("{'todos.2':{$exists:true}}");
+        query = new BasicQuery("{'todos.2' : { '$exists' : 'true' }}");
         List<User> users =  mongoOperation.find(query,User.class);
         System.out.println("Mas de 2 Todos");
         System.out.println(users);
