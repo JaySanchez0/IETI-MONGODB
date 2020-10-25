@@ -1,6 +1,7 @@
 package eci.ieti.data.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ public class Todo {
 
     private Date dueDate;
 
+   @DBRef(lazy = true)
     private User responsible;
 
     private String description;
@@ -59,5 +61,13 @@ public class Todo {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public User getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(User responsible) {
+        this.responsible = responsible;
     }
 }

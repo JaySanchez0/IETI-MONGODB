@@ -95,7 +95,9 @@ public class Application implements CommandLineRunner {
         todos.add(t3);
         todos.add(t2);
         u1.setTodos(todos);
-        userRepository.save(u1);
+        u1 = userRepository.save(u1);
+        t2.setResponsible(u1);
+        todoRepository.save(t2);
         todos=new ArrayList<>();
         todos.add(t4);
         User user2 = new User();
@@ -121,7 +123,7 @@ public class Application implements CommandLineRunner {
         }
 
         query = new Query();
-        query.addCriteria(Criteria.where("priority").gt(5));
+        query.addCriteria(Criteria.where("priority").gt(5).andOperator(Criteria.where("responsible").is(u1)));
         todos =  mongoOperation.find(query,Todo.class);
         System.out.println("Todos con prioridad mayor a 5");
         for(Todo t: todos){

@@ -16,8 +16,7 @@ public class User {
     public  User(){
 
     }
-
-
+    
     public String getId() {
         return id;
     }
@@ -32,5 +31,10 @@ public class User {
 
     public void setTodos(List<Todo> todos) {
         this.todos = todos;
+    }
+
+    public boolean equals(Object obj){
+        if(!(obj instanceof User)) return false;
+        return ((User) obj).getId()==id;
     }
 }
