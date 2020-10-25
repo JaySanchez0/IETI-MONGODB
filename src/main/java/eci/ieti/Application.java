@@ -84,10 +84,10 @@ public class Application implements CommandLineRunner {
         	.forEach(System.out::println);
    
         System.out.println();*/
-        Todo t1 = todoRepository.save(new Todo(new Date(2021,12,15),"Nuevo",6));
-        Todo t2 = todoRepository.save(new Todo(new Date(2012,12,15),"Nuevo",7));
-        Todo t3 = todoRepository.save(new Todo(new Date(2021,12,15),"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",4));
-        Todo t4 = todoRepository.save(new Todo(new Date(2011,12,15),"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",4));
+        Todo t1 = todoRepository.save(new Todo(new Date(System.currentTimeMillis()+1000000000),"Nuevo",6));
+        Todo t2 = todoRepository.save(new Todo(new Date(System.currentTimeMillis()+1000000000),"Nuevo",7));
+        Todo t3 = todoRepository.save(new Todo(new Date(System.currentTimeMillis()-10000),"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",4));
+        Todo t4 = todoRepository.save(new Todo(new Date(System.currentTimeMillis()-10000),"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",4));
 
         User u1 = new User();
         List<Todo> todos = new ArrayList<>();
@@ -115,8 +115,9 @@ public class Application implements CommandLineRunner {
         Query query = new Query();
         query.addCriteria(Criteria.where("dueDate").lt(new Date()));
         todos =  mongoOperation.find(query,Todo.class);
+        System.out.println("Expirados");
         for(Todo t: todos){
-            System.out.println();
+            System.out.println(t.getDueDate().toString());
         }
 
         query = new Query();
@@ -142,8 +143,8 @@ public class Application implements CommandLineRunner {
             System.out.println(t.getDescription()+" size: "+t.getDescription().length());
         }
 
-        //userRepository.deleteAll();
-        //todoRepository.deleteAll();
+        userRepository.deleteAll();
+        todoRepository.deleteAll();
 
 
     }
