@@ -13,6 +13,8 @@ public class Todo {
 
     private Date dueDate;
 
+    private User responsible;
+
     private String description;
 
     private int priority;
