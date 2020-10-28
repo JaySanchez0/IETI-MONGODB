@@ -4,10 +4,11 @@ import eci.ieti.data.model.Todo;
 import eci.ieti.data.model.User;
 import org.springframework.data.repository.CrudRepository;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 public interface TodoRepository extends CrudRepository<Todo,String> {
 
-    List<Todo> findByResponsible(User responsible);
+    List<Todo> findByResponsible(User responsible, Pageable pageable);
 
 }

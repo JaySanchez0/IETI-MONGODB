@@ -59,10 +59,28 @@ Create a Spring Boot Application that connects with MongoDB.
 6. Run the project and verify that the connection to the database works properly. Answer the following questions:
 
 - How many customers were created in the database?
+    Crea 5 consumers
 - Where is the *findAll* method implemented?
+
+   Es implementado por defecto dentro de spring
+   
 - Suppose you have more than 1000 products in your database. How would you implement a method for supporting pagination and return pages of 50 products to your frontend?
+
+  Al registro en la base de datos le pondria un atributo Pageable
+  
 - How many products contain the "plus" word in their description?
+
+    4 productos
+    
+    ![img](img/lab/queryPlus.PNG) 
+
 - How many products are returned by the *findByDescriptionContaining* query? Why?
+
+    4 Productos
+    Busca internamete que contenga un substring
+    
+    Corresponde a los 4 productos que se pueden ver en la imagen del item anterior
+    
 - Which are the collection names where the objects are stored? Where are those names assigned?
 
 5. Create two more models (User and Todo) with the following structure:
@@ -90,7 +108,10 @@ Create a Spring Boot Application that connects with MongoDB.
             "status": "pending"
         }
     ````                  
-    
+   
+   ![img](img/lab/todo.PNG)
+
+    ![img](img/lab/user.PNG)    
     
 6. Create a repository for the _Users_ using the *CustomerRepository* as reference.
 
@@ -172,3 +193,13 @@ Create a Spring Boot Application that connects with MongoDB.
     * Todos that contains a description with a length greater than 30 characters        
 
 8. Implement the queries of the previous step using *derived query methods* in your repository interface. Is it possible to implement all of them?
+
+
+La consulta numero 3 se logo crear agregando en usuario visibilidad sobre sus todos,
+pero al ejecutarla en el cliente de mongo trabaja
+
+![img](img/lab/QueryExec.PNG)
+
+Pero al momento de ejecutarla en java no muestra el resultado esperado.
+
+Asi que la pregunta 3 no fue posible implementarla.

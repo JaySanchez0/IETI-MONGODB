@@ -19,6 +19,8 @@ public class Todo {
 
     private String description;
 
+    private String state;
+
     private int priority;
 
     public Todo(){
@@ -69,5 +71,13 @@ public class Todo {
 
     public void setResponsible(User responsible) {
         this.responsible = responsible;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
